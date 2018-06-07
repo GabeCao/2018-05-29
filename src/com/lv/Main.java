@@ -16,13 +16,26 @@ public class Main {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
+            for (HotSpot hotSpot : hotSpots) {
+                hotSpot.getStringIntegerMap().put(file.getName(), 0);
+            }
+
             String line;
 
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
                 double x = Double.parseDouble(data[0]);
+                double y = Double.parseDouble(data[1]);
+                Point point = new Point(x, y);
 
+                for (HotSpot hotSpot : hotSpots) {
+                    if (Utils.getDistanceBetweenAndPointAndHotSpot(point, hotSpot) < 60) {
+                        hotSpot.getStringIntegerMap().put(file.getName(), hotSpot.getStringIntegerMap().get(file.getName()) + 1);
+                    }
+                }
             }
+
+            System.out.println(".....");
         }
     }
 

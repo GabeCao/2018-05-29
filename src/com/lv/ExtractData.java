@@ -8,9 +8,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ExtractData {
+    //获取每个时间段的数据
     public static void main(String[] args) throws Exception {
 
-        File fileFolder = new File("C:\\E\\dataSet\\2018-05-29\\2018-05-27(最后的数据)");
+        File fileFolder = new File("C:\\E\\dataSet\\2018-05-29\\四秒\\sensor数据四秒");
         File[] files = fileFolder.listFiles();
 
         for (File file : files) {
@@ -19,10 +20,10 @@ public class ExtractData {
             String line;
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
-            Date start = simpleDateFormat.parse("08:00:00");
-            Date end   = simpleDateFormat.parse("09:00:00");
+            Date start = simpleDateFormat.parse("21:00:00");
+            Date end   = simpleDateFormat.parse("22:00:00");
 
-            File outFile = new File("C:\\E\\dataSet\\2018-05-29\\8点时间段\\" + file.getName());
+            File outFile = new File("C:\\E\\dataSet\\2018-05-29\\四秒\\时间段\\21是时间段\\" + file.getName());
             FileWriter fileWriter = new FileWriter(outFile, true);
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
